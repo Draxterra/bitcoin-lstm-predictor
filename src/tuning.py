@@ -1,10 +1,10 @@
 import optuna
-from keras.callbacks import EarlyStopping
-from keras.layers import LSTM, Bidirectional, Dense, Dropout
-from keras.models import Sequential
-from keras.optimizers import Adam, Nadam, RMSprop
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
+from tensorflow.keras.callbacks import EarlyStopping
+from tensorflow.keras.layers import LSTM, Bidirectional, Dense, Dropout
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.optimizers import Adam, Nadam, RMSprop
 
 
 def build_model(trial, input_shape):
@@ -77,7 +77,7 @@ def objective(trial, X, y):
     return val_loss
 
 
-def tune_lstm(X, y, n_trials=5):
+def tune_lstm(X, y, n_trials=10):
     study = optuna.create_study(direction="minimize")
     study.optimize(lambda trial: objective(trial, X, y), n_trials=n_trials)
     print("Best params:", study.best_params)

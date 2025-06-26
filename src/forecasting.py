@@ -1,11 +1,11 @@
 import numpy as np
 import tensorflow as tf
 from keras.callbacks import EarlyStopping
-from keras.layers import LSTM, Dense, Dropout
-from keras.models import Sequential
 from sklearn.metrics import (mean_absolute_error,
                              mean_absolute_percentage_error,
                              mean_squared_error, r2_score)
+from tensorflow.keras.layers import LSTM, Bidirectional, Dense, Dropout
+from tensorflow.keras.models import Sequential
 
 
 def build_lstm_model(input_shape):
@@ -24,7 +24,7 @@ def train_model(model, X_train, y_train, X_val, y_val):
     history = model.fit(
         X_train, y_train,
         validation_data=(X_val, y_val),
-        epochs=10,
+        epochs=40,
         batch_size=32,
         callbacks=[early_stopping],
         verbose=1

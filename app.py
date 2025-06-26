@@ -3,8 +3,8 @@ from datetime import datetime, timedelta
 import numpy as np
 import pandas as pd
 import streamlit as st
-from keras.layers import LSTM, Bidirectional, Dense, Dropout
-from keras.models import Sequential
+from tensorflow.keras.layers import LSTM, Bidirectional, Dense, Dropout
+from tensorflow.keras.models import Sequential
 
 from src.data_loader import load_btc_data, preprocess_data
 from src.forecasting import evaluate_model, train_model
@@ -60,7 +60,7 @@ if forecast_trigger:
 
     st.subheader("⚙️ Tuning Hyperparameter")
     with st.spinner("🚀 Menjalankan tuning hyperparameter (Optuna)..."):
-        best_params = tune_lstm(X_train, y_train, n_trials=5)
+        best_params = tune_lstm(X_train, y_train, n_trials=10)
     st.success("Tuning selesai \U0001F3AF")
     st.write("Best Hyperparameters:")
     st.json(best_params)
