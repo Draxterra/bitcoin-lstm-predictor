@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 
 
-def load_btc_data(start="2019-01-01", end=None):
+def load_btc_data(start="2020-01-01", end=None):
     """
     Mengambil data historis BTC/USD dari Yahoo Finance.
     """
